@@ -4,10 +4,8 @@ os:
   - osx
   - linux
 
-before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install python; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then apt update; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then install python3; fi
+sudo:
+  - true
 
 script:
   - python3 --version
