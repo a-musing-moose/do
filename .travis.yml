@@ -8,6 +8,7 @@ sudo:
   - true
 
 before_install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then pyenv upgrade; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then pyenv install 3.7.4; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then pyenv global 3.7.4; fi
 
