@@ -8,9 +8,6 @@ sudo:
   - true
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt update; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install build-essential git libreadline-dev zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then pyenv install 3.7.4; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then pyenv global 3.7.4; fi
 
