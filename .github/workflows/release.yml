@@ -62,6 +62,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Get tag
+      id: tag
+      run: |
+        echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
