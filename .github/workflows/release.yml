@@ -56,3 +56,26 @@ jobs:
       with:
         name: do-${{ steps.tag.outputs.tag }}-Darwin
         path: dist/do
+
+  Windows:
+    name: Build and Release [Windows]
+    needs: Testing
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Build
+      run: |
+        make clean build
+    - name: Upload release file
+      uses: actions/upload-artifact@v1
+      with:
+        name: do-${{ steps.tag.outputs.tag }}-Windows.exe
+        path: dist/do.exe

@@ -54,9 +54,9 @@ jobs:
         make clean build
 
   Windows:
-    needs: Testing
+    name: Build [Windows]
     runs-on: windows-latest
-
+    needs: Testing
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python ${{ matrix.python-version }}
@@ -66,6 +66,6 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install -r requirements.txt
-    - name: Test
+    - name: Build
       run: |
         make clean build

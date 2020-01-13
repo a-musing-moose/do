@@ -3,5 +3,5 @@ from invoke import Program
 
 
 def main():
-    program = Program(version="0.1.0", name="do")
+    program = Program(version="0.2.0", name="do")
     program.run()
