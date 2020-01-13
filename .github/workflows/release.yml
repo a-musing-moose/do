@@ -22,10 +22,10 @@ jobs:
       run: |
         ./build.sh
     - name: Upload release file
-        uses: actions/upload-artifact@v1
-        with:
-          name: do-${{ steps.tag.outputs.tag }}-Linux
-          path: dist/do
+      uses: actions/upload-artifact@v1
+      with:
+        name: do-${{ steps.tag.outputs.tag }}-Linux
+        path: dist/do
 
   MacOS:
     runs-on: macos-latest
