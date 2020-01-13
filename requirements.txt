@@ -2,3 +2,5 @@ black
 invoke
 ipython
 pyinstaller
+pytest
+pytest-flake8

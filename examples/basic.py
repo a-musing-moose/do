@@ -1,5 +1,5 @@
 from invoke import task
-from do.utils import docker_over_ssh
+from do.utils import docker_over_ssh  # noqa: F401
 
 
 @task()

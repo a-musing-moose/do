@@ -4,10 +4,8 @@ import sys
 import shlex
 from shutil import which
 from contextlib import contextmanager
-from functools import lru_cache
 from hashlib import md5
 from pathlib import Path
-from typing import Optional, MutableMapping
 
 from invoke import task
 
@@ -27,7 +25,7 @@ def _get_env_path(name):
 
 
 def _encrypt(ctx, name):
-    secret_path = _get_secret_path(name)
+    # secret_path = _get_secret_path(name)
     env_path = _get_env_path(name)
 
     result = ctx.run(
@@ -53,7 +51,7 @@ def _decrypt(ctx, name, create=False):
 
     ctx.run(
         f"gpg --passphrase-file {PASSPHRASE_PATH} --yes "
-        "--batch -d -o {env_path} {secret_path}"
+        f"--batch -d -o {env_path} {secret_path}"
     )
 
 
@@ -112,7 +110,7 @@ def edit_secrets(ctx, name):
         lambda x: x is not None,
         [os.environ.get("EDITOR", None), "nano", "vim", "vi", "emacs"],
     )
-    for candidate in canditates:
+    for candidate in candidates:
         if which(candidate):
             editor = candidate
             break
