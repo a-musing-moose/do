@@ -1,11 +1,10 @@
-name: Tests
+name: Build
 
 on: [push, pull_request]
 
 jobs:
 
   Linux:
-    needs: Linting
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -25,7 +24,6 @@ jobs:
         ./build.sh
 
   MacOS:
-    needs: Linting
     runs-on: macos-latest
 
     steps:
