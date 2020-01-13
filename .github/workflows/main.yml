@@ -13,8 +13,8 @@ jobs:
       with:
         python-version: 3.7
     - name: Install python dependencies
-        run: |
-          pip install -r requirements.txt
+      run: |
+        pip install -r requirements.txt
     - name: Test
       run: |
         make test
