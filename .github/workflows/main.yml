@@ -33,6 +33,7 @@ jobs:
       run: |
         pip install -r requirements.txt
     - name: Build
+      uses: actions-github/upx@master
       run: |
         make clean build
 
