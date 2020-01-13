@@ -46,9 +46,26 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
-    - name: Install python dependencies
+    - name: Install Python dependencies
       run: |
         pip install -r requirements.txt
     - name: Build
+      run: |
+        make clean build
+
+  Windows:
+    needs: Testing
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Test
       run: |
         make clean build
