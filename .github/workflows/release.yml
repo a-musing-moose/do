@@ -1,4 +1,4 @@
-name: Build
+name: Release
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 jobs:
 
   Linux:
+    name: Build and Release [Linux]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -32,8 +33,8 @@ jobs:
         path: dist/do
 
   MacOS:
+    name: Build and Release [MacOS]
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Get tag
