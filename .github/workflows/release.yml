@@ -1,0 +1,46 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+
+  Linux:
+    needs: Linting
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install system dependencies
+      run: |
+        apt-get update
+        apt-get install build-essential
+    - name: Install python dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Build
+      run: |
+        ./build.sh
+
+  MacOS:
+    needs: Linting
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    # - name: Install system dependencies
+    #   run: |
+    #     apt-get update
+    #     apt-get install build-essential
+    - name: Install python dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Build
+      run: |
+        ./build.sh
