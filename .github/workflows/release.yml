@@ -24,7 +24,7 @@ jobs:
         pip install -r requirements.txt
     - name: Build
       run: |
-        ./build.sh
+        make clean build
     - name: Upload release file
       uses: actions/upload-artifact@v1
       with:
@@ -49,7 +49,7 @@ jobs:
         pip install -r requirements.txt
     - name: Build
       run: |
-        ./build.sh
+        make clean build
     - name: Upload release file
       uses: actions/upload-artifact@v1
       with:
