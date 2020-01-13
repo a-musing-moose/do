@@ -3,17 +3,21 @@ name: Tests
 on: [push, pull_request]
 
 jobs:
-  Testing:
+	Testing:
+		name: Testing and Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.7
-      - name: Test
-        run: |
-          make test
+		- uses: actions/checkout@v1
+		- name: Set up Python 3.7
+			uses: actions/setup-python@v1
+			with:
+				python-version: 3.7
+		- name: Install python dependencies
+				run: |
+					pip install -r requirements.txt
+		- name: Test
+			run: |
+				make test
 
 	Linux:
 		name: Build [Linux]
@@ -48,4 +52,3 @@ jobs:
 		- name: Build
 			run: |
 				make clean build
-
