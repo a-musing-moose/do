@@ -80,5 +80,5 @@ jobs:
     - name: Upload release file
       uses: actions/upload-artifact@v1
       with:
-        name: do-${{ steps.tag.outputs.tag }}-Windows.exe
+        name: do-${{ steps.tag.outputs.tag }}-Windows
         path: dist/do.exe
